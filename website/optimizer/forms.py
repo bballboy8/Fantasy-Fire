@@ -1,12 +1,13 @@
 from django import forms
 import os
+from pathlib import Path
 
 CHOICES=[('not_random','Not Random'),
          ('uniform','Uniform'),
          ('gaussian', 'Gaussian')]
 
 def get_slates():
-    slate_files = os.listdir(r'\\home\ubuntu\Fantasy-Fire\website\optimizer\Slates')
+    slate_files = os.listdir(Path(r'//home/ubuntu/Fantasy-Fire/website/optimizer/Slates')
     slates = []
     for slate in slate_files:
         if "Main" in slate:

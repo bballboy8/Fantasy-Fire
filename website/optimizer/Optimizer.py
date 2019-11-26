@@ -1,6 +1,7 @@
 from pydfs_lineup_optimizer import get_optimizer, Site, Sport, CSVLineupExporter
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 
 def get_daily_roster(csv_file):
@@ -9,7 +10,7 @@ def get_daily_roster(csv_file):
 
 
 def create_predictions(predictions,
-                       slate='\\\\home\\ubuntu\\Fantasy-Fire\\website\\optimizer\\Slates\\Main_Slate.csv'):
+                       slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/Main_Slate.csv')):
     pd.options.display.max_columns = 999
     pd.set_option('display.width', 1000)
     np.set_printoptions(threshold=10000000)
@@ -20,7 +21,7 @@ def create_predictions(predictions,
         columns=['AvgPointsPerGame', 'Name + ID', 'Game Info', 'Unnamed: 0', 'name'])
     result = result.rename(columns={'predicted': 'Predicted_FP'})
     result = result.fillna(0)
-    result.to_csv("\\\\home\\ubuntu\\Fantasy-Fire\\website\\optimizer\\Predictions.csv")
+    result.to_csv(Path("//home/ubuntu/Fantasy-Fire/website/optimizer/Predictions.csv"))
     return result
 
 
