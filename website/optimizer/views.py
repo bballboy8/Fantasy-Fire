@@ -11,7 +11,7 @@ import pandas as pd
 
 
 def get_slates():
-    slate_files = os.listdir(r'C:\Users\Charlie\Desktop\Fantasy Fire\website\optimizer\Slates')
+    slate_files = os.listdir(r'optimizer\Slates')
     slates = []
     for slate in slate_files:
         if "Main" in slate:
@@ -42,10 +42,10 @@ def create_optimizer(request):
             slate = form2.cleaned_data['slate']
             form = OptimizerForm()
             form2 = SlateForm(initial={'slate': slate})
-            df = get_daily_roster('C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\prediction.csv')
+            df = get_daily_roster('optimizer\\prediction.csv')
             # df = create_predictions(df)
             df = create_predictions(df,
-                                    slate='C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Slates\\' + slate + '.csv')
+                                    slate='optimizer\\Slates\\' + slate + '.csv')
             df['min_exposure'] = 0
             df['max_exposure'] = 100
             df.insert(0, "Include", '', True)
@@ -82,8 +82,8 @@ def create_optimizer(request):
             else:
                 optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
 
-            df = pd.read_csv("C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Slates\\" + slate + ".csv")
-            df2 = pd.read_csv(r"C:\Users\Charlie\Desktop\Fantasy Fire\website\optimizer\prediction.csv")
+            df = pd.read_csv("optimizer\\Slates\\" + slate + ".csv")
+            df2 = pd.read_csv(r"optimizer\prediction.csv")
             result = df.merge(df2, left_on='Name', right_on='name', how='left')
             # result = result.drop(
             #     columns=['AvgPointsPerGame'])
@@ -111,9 +111,9 @@ def create_optimizer(request):
                 result['max_exposure'][ind] = int(max_exposures[ind]) / 100
                 result['min_exposure'][ind] = int(min_exposures[ind]) / 100
             result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
-            result.to_csv("C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Predictions.csv")
+            result.to_csv("optimizer\\Predictions.csv")
             optimizer.load_players_from_csv(
-                'C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Predictions.csv')
+                'optimizer\\Predictions.csv')
             optimizer.set_deviation(0, int(deviation) / 100)
             optimizer.set_min_salary_cap(min_salary)
             for player in optimizer.players:
@@ -126,9 +126,9 @@ def create_optimizer(request):
                 optimizer.restore_player(player)
             exporter = CSVLineupExporter(
                 optimizer.optimize(no_lineups, randomness=generation_type, max_exposure=max_exposure))
-            exporter.export('C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\lineups.csv')
+            exporter.export('optimizer\\lineups.csv')
 
-            with open('C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\lineups.csv') as myfile:
+            with open('optimizer\\lineups.csv') as myfile:
                 response = HttpResponse(myfile, content_type='text/csv')
                 response['Content-Disposition'] = 'attachment; filename=lineups.csv'
                 return response
@@ -136,10 +136,10 @@ def create_optimizer(request):
     else:
         form = OptimizerForm()
         form2 = SlateForm(initial={'slate': 'Main_Slate'})
-        df = get_daily_roster('C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\prediction.csv')
+        df = get_daily_roster('optimizer\\prediction.csv')
         # df = create_predictions(df)
         df = create_predictions(df,
-                                slate='C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Slates\\Main_Slate.csv')
+                                slate='optimizer\\Slates\\Main_Slate.csv')
         df['min_exposure'] = 0
         df['max_exposure'] = 100
         df.insert(0, "Include", '', True)

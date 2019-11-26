@@ -6,7 +6,7 @@ CHOICES=[('not_random','Not Random'),
          ('gaussian', 'Gaussian')]
 
 def get_slates():
-    slate_files = os.listdir(r'C:\Users\Charlie\Desktop\Fantasy Fire\website\optimizer\Slates')
+    slate_files = os.listdir(r'optimizer\Slates')
     slates = []
     for slate in slate_files:
         if "Main" in slate:

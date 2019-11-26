@@ -9,7 +9,7 @@ def get_daily_roster(csv_file):
 
 
 def create_predictions(predictions,
-                       slate='C:\\Users\\Charlie\\Desktop\\Fantasy Fire\\website\\optimizer\\Slates\\Main_Slate.csv'):
+                       slate='optimizer\\Slates\\Main_Slate.csv'):
     pd.options.display.max_columns = 999
     pd.set_option('display.width', 1000)
     np.set_printoptions(threshold=10000000)
@@ -20,7 +20,7 @@ def create_predictions(predictions,
         columns=['AvgPointsPerGame', 'Name + ID', 'Game Info', 'Unnamed: 0', 'name'])
     result = result.rename(columns={'predicted': 'Predicted_FP'})
     result = result.fillna(0)
-    result.to_csv("Predictions.csv")
+    result.to_csv("optimizer\\Predictions.csv")
     return result
 
 
