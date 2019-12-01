@@ -118,7 +118,6 @@
     {{form2}}
     <button name="change_slate" type="submit">Change Slate</button>
 </form><br>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search"><br>
 <form method="post" action="/optimizer/" id="optimizer">
     <input type="hidden" name="slate" value={{slate}}>
     {% csrf_token %}
@@ -126,7 +125,8 @@
     <!--<p>Number of Lineups: <input id="no_lineups" type="number" name="no_lineups" value=1 min="1"></p>-->
     <!--<br>-->
     <!--<br>-->
-    {{form}}
+    {{form}}<br>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
     <div class="table-responsive searchable sortable">
         {{ player_table |safe }}
     </div>
