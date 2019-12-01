@@ -65,7 +65,7 @@ def create_optimizer(request):
             df.rename(columns={
                 'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
                 inplace=True)
-            html_table = df.to_html(index=False, justify='left', escape=False,
+            html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData'
                                     classes=[
                                         'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable, container-fluid'])
             return render(request, 'optimizer/optimizer.html',
@@ -159,7 +159,7 @@ def create_optimizer(request):
         df.rename(columns={
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
-        html_table = df.to_html(index=False, justify='left', escape=False,
+        html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData'
                                 classes=[
                                     'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable, container-fluid'])
         return render(request, 'optimizer/optimizer.html',

@@ -1,6 +1,8 @@
 {% extends "optimizer/base.html" %}
 {% load crispy_forms_tags %}
 <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <style>
         /* Dropdown Button */
 .dropbtn {
@@ -49,6 +51,11 @@
 
 
     </style>
+
+<script type="text/javascript">
+    $("#slateData").DataTable();
+</script>
+
 </head>
 {% block content %}
 <script>
@@ -73,6 +80,8 @@
     }
 
 </script>
+
+
 <h1>Optimizer</h1>
 <form method="post" action="/optimizer/" id="slate">
     {% csrf_token %}
