@@ -67,7 +67,7 @@ def create_optimizer(request):
                 inplace=True)
             html_table = df.to_html(index=False, justify='left', escape=False,
                                     classes=[
-                                        'table table-bordered table-striped table-hover table-responsive table-sm, container-fluid'])
+                                        'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable, container-fluid'])
             return render(request, 'optimizer/optimizer.html',
                           {'form': form, 'player_table': html_table, 'form2': form2, 'slate': slate})
         if form.is_valid():
@@ -161,6 +161,6 @@ def create_optimizer(request):
             inplace=True)
         html_table = df.to_html(index=False, justify='left', escape=False,
                                 classes=[
-                                    'table table-bordered table-striped table-hover table-responsive table-sm, container-fluid'])
+                                    'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable, container-fluid'])
         return render(request, 'optimizer/optimizer.html',
                       {'form': form, 'player_table': html_table, 'form2': form2, 'slate': 'Main_Slate'})
