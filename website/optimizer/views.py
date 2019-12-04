@@ -48,7 +48,7 @@ def create_optimizer(request):
             df = create_predictions(df,
                                     slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/' + slate + '.csv'))
             df['min_exposure'] = 0
-            df['max_exposure'] = 100
+            df['max_exposure'] = 1
             df.insert(0, "Include", '', True)
             for ind in df.index:
                 df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
@@ -60,7 +60,7 @@ def create_optimizer(request):
                 df['min_exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
                     0) + ">"
                 df['max_exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
-                    100) + ">"
+                    1) + ">"
                 df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
             df.rename(columns={
                 'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
@@ -106,10 +106,10 @@ def create_optimizer(request):
                 elif 'deviation' in key:
                     deviations.append(value)
             result['min_exposure'] = 0
-            result['max_exposure'] = 100
+            result['max_exposure'] = 1
             for ind in result.index:
                 result['AvgPointsPerGame'][ind] = fantasy_points[ind]
-                result['max_exposure'][ind] = int(max_exposures[ind]) / 100
+                result['max_exposure'][ind] = max(int(max_exposure), int(max_exposures[ind])) / 100
                 result['min_exposure'][ind] = int(min_exposures[ind]) / 100
             result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
             result.to_csv(Path("//home/ubuntu/Fantasy-Fire/website/optimizer/Predictions.csv"))
@@ -142,7 +142,7 @@ def create_optimizer(request):
         df = create_predictions(df,
                                 slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/Main_Slate.csv'))
         df['min_exposure'] = 0
-        df['max_exposure'] = 100
+        df['max_exposure'] = 1
         df.insert(0, "Include", '', True)
         for ind in df.index:
             df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
@@ -154,7 +154,7 @@ def create_optimizer(request):
             df['min_exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
                 0) + ">"
             df['max_exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
-                100) + ">"
+                1) + ">"
             df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
         df.rename(columns={
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
