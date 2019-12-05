@@ -109,7 +109,7 @@ def create_optimizer(request):
             result['max_exposure'] = 1
             for ind in result.index:
                 result['AvgPointsPerGame'][ind] = fantasy_points[ind]
-                if int(max_exposure) != int(max_exposures[ind]):
+                if int(max_exposure) != int(max_exposures[ind]) and int(max_exposures[ind]) > 1:
                     result['max_exposure'][ind] = int(max_exposures[ind]) / 100
                 result['min_exposure'][ind] = int(min_exposures[ind]) / 100
             result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
