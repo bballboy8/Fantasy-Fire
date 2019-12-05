@@ -27,7 +27,7 @@ class OptimizerForm(forms.Form):
     # min_deviation = forms.DecimalField(label='Minimum Deviation %', min_value=0, initial=0)
     deviation = forms.DecimalField(label='Deviation %', min_value=0, initial=15)
     min_salary = forms.IntegerField(label='Minimum Salary', max_value=50000, min_value=15000, initial=40000)
-    max_exposure = forms.IntegerField(label='Maximum Exposure', max_value=100, min_value=1, initial=1)
+    max_exposure = forms.IntegerField(label='Maximum Exposure', max_value=100, min_value=1, initial=100)
     generation_type = forms.ChoiceField(choices=CHOICES)
 
 
