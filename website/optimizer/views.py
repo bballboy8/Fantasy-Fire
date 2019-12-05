@@ -109,7 +109,8 @@ def create_optimizer(request):
             result['max_exposure'] = 1
             for ind in result.index:
                 result['AvgPointsPerGame'][ind] = fantasy_points[ind]
-                result['max_exposure'][ind] = max(int(max_exposure), int(max_exposures[ind])) / 100
+                if int(max_exposure) != int(max_exposures[ind]):
+                    result['max_exposure'][ind] = int(max_exposures[ind]) / 100
                 result['min_exposure'][ind] = int(min_exposures[ind]) / 100
             result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
             result.to_csv(Path("//home/ubuntu/Fantasy-Fire/website/optimizer/Predictions.csv"))
