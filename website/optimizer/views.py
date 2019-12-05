@@ -126,7 +126,7 @@ def create_optimizer(request):
                 player = optimizer.get_player_by_id(id)
                 optimizer.restore_player(player)
             exporter = CSVLineupExporter(
-                optimizer.optimize(no_lineups, randomness=generation_type, max_exposure=max_exposure))
+                optimizer.optimize(no_lineups, randomness=generation_type, max_exposure=max_exposure/100))
             exporter.export(Path('//home/ubuntu/Fantasy-Fire/website/optimizer/lineups.csv'))
 
             with open('//home/ubuntu/Fantasy-Fire/website/optimizer/lineups.csv') as myfile:
