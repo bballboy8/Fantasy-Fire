@@ -163,6 +163,7 @@ def create_optimizer(request):
         df.rename(columns={
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
+        df = df[['Include', 'Name','ID','Roster Position','Salary','TeamAbbrev','Opp','Predicted_FP','Min Exposure','Max Exposure','Value']]
         # df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
