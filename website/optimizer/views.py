@@ -68,7 +68,7 @@ def create_optimizer(request):
                 inplace=True)
             html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                     classes=[
-                                        'table w3-table-all table-bordered table-striped table-hover table-responsive table-sm, container-fluid'])
+                                        'table table-bordered sortable table-striped table-hover table-responsive table-sm, container-fluid'])
             return render(request, 'optimizer/optimizer.html',
                           {'form': form, 'player_table': html_table, 'form2': form2, 'slate': slate})
         if form.is_valid():
@@ -165,6 +165,6 @@ def create_optimizer(request):
         # df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
-                                    'table w3-table-all table-bordered table-striped table-hover table-responsive table-sm searchable container-fluid'])
+                                    'table sortable table-bordered table-striped table-hover table-responsive table-sm searchable container-fluid'])
         return render(request, 'optimizer/optimizer.html',
                       {'form': form, 'player_table': html_table, 'form2': form2, 'slate': 'Main_Slate'})
