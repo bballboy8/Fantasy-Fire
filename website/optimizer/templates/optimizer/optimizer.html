@@ -16,6 +16,20 @@
 <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
     <style>
         /* Dropdown Button */
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -114,12 +128,12 @@
   }
 }
 $(document).ready(function () {
-$('#dtBasicExample').DataTable();
+$('#slateData').DataTable();
 $('.dataTables_length').addClass('bs-select');
 });
 
 </script>
-<script type="text/javascript">onload = function() {var myTable = new SortedTable();}</script>
+
 
 <h1>Optimizer</h1>
 <form method="post" action="/optimizer/" id="slate">
