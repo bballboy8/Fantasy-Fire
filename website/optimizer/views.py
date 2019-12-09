@@ -68,7 +68,7 @@ def create_optimizer(request):
                 inplace=True)
             html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                     classes=[
-                                        'slateData table sorted table-bordered table-striped table-hover table-responsive table-sm'])
+                                        'slateData table table-bordered table-striped table-hover table-responsive table-sm'])
             return render(request, 'optimizer/optimizer.html',
                           {'form': form, 'player_table': html_table, 'form2': form2, 'slate': slate})
         if form.is_valid():
