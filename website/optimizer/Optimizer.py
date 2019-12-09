@@ -17,6 +17,8 @@ def create_predictions(predictions,
     df = pd.read_csv(slate)
     df2 = predictions
     result = df.merge(df2, left_on='Name', right_on='name', how='left')
+    result.insert(7, "Opp", '', True)
+    result['Opp'] = result['Game Info'][:3] if result[TeamAbbrev] != result['Game Info'][:3] else result['Game Info'][4:7]
     result = result.drop(
         columns=['AvgPointsPerGame', 'Name + ID', 'Game Info', 'Unnamed: 0', 'name'])
     result = result.rename(columns={'predicted': 'Predicted_FP'})
