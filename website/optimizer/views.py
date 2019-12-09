@@ -163,8 +163,11 @@ def create_optimizer(request):
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
         # df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
+        # html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
+        #                         classes=[
+        #                             'table sorted table-bordered table-striped table-hover table-responsive table-sm searchable container-fluid'])
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
-                                    'table sorted table-bordered table-striped table-hover table-responsive table-sm searchable container-fluid'])
+                                    'sorted'])
         return render(request, 'optimizer/optimizer.html',
                       {'form': form, 'player_table': html_table, 'form2': form2, 'slate': 'Main_Slate'})
