@@ -15,10 +15,10 @@ def create_predictions(predictions,
     pd.set_option('display.width', 1000)
     np.set_printoptions(threshold=10000000)
     df = pd.read_csv(slate)
+    df.insert(7, "Opp", '', True)
+    df['Opp'] = df['Game Info'][:3] if df['TeamAbbrev'] != df['Game Info'][:3] else df['Game Info'][4:7]
     df2 = predictions
     result = df.merge(df2, left_on='Name', right_on='name', how='left')
-    result.insert(7, "Opp", '', True)
-    result['Opp'] = result['Game Info'][:3] if result['TeamAbbrev'] != result['Game Info'][:3] else result['Game Info'][4:7]
     result = result.drop(
         columns=['AvgPointsPerGame', 'Name + ID', 'Game Info', 'Unnamed: 0', 'name'])
     result = result.rename(columns={'predicted': 'Predicted_FP'})
