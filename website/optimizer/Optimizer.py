@@ -16,7 +16,7 @@ def create_predictions(predictions,
     np.set_printoptions(threshold=10000000)
     df = pd.read_csv(slate)
     df.insert(7, "Opp", '', True)
-    df['Opp'] = df['Game Info'][:3] if df['TeamAbbrev'] != df['Game Info'][:3] else df['Game Info'][4:7]
+    df['Opp'] = df['Game Info'].str[:3] if df['TeamAbbrev'].str != df['Game Info'].str[:3] else df['Game Info'].str[4:7]
     df2 = predictions
     result = df.merge(df2, left_on='Name', right_on='name', how='left')
     result = result.drop(
