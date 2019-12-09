@@ -65,6 +65,7 @@ def create_optimizer(request):
             df.rename(columns={
                 'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
                 inplace=True)
+            df['Predicted_FP'] = df['Predicted_FP'].astype(float)
             # df['Value'] = round(pd.to_numeric(df['Predicted_FP']) / (pd.to_numeric(df['Salary']) / 1000), 2)
             html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                     classes=[
@@ -161,6 +162,7 @@ def create_optimizer(request):
         df.rename(columns={
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
+        df['Predicted_FP'] = df['Predicted_FP'].astype(float)
         # df['Value'] = round(pd.to_numeric(df['Predicted_FP']) / (pd.to_numeric(df['Salary']) / 1000), 2)
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
