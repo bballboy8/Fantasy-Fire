@@ -165,7 +165,8 @@ def create_optimizer(request):
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
         df['Predicted_FP'] = df['Predicted_FP'].astype(float)
-        df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
+        df['Value'] = df.apply(lambda row: round(row.Predicted_FP / (row.Salary / 1000),2), axis = 1)
+        # df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
                                     'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable data-search="true" container-fluid'])
