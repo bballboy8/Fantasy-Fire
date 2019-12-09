@@ -58,9 +58,9 @@ def create_optimizer(request):
                 # df['Predicted FP'] = df['Predicted FP'].apply(
                 #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
                 #         x) + " id='id_predicted_fp'>")
-                df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+                df['Min Exposure'][ind] = "<input type='number' name='min_exposure_" + str(ind) + "' value=" + str(
                     0) + ">"
-                df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+                df['Max Exposure'][ind] = "<input type='number' name='max_exposure_" + str(ind) + "' value=" + str(
                     1) + ">"
                 df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
             df.rename(columns={
@@ -154,9 +154,9 @@ def create_optimizer(request):
             # df['Predicted FP'] = df['Predicted FP'].apply(
             #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
             #         x) + " id='id_predicted_fp'>")
-            df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+            df['Min Exposure'][ind] = "<input type='number' name='min_exposure_" + str(ind) + "' value=" + str(
                 0) + ">"
-            df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+            df['Max Exposure'][ind] = "<input type='number' name='max_exposure_" + str(ind) + "' value=" + str(
                 1) + ">"
             df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
         df.rename(columns={
