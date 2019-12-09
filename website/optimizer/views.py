@@ -47,8 +47,8 @@ def create_optimizer(request):
             # df = create_predictions(df)
             df = create_predictions(df,
                                     slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/' + slate + '.csv'))
-            df['min_exposure'] = 0
-            df['max_exposure'] = 1
+            df['Min Exposure'] = 0
+            df['Max Exposure'] = 1
             df.insert(0, "Include", '', True)
             for ind in df.index:
                 df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
@@ -57,9 +57,9 @@ def create_optimizer(request):
                 # df['Predicted FP'] = df['Predicted FP'].apply(
                 #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
                 #         x) + " id='id_predicted_fp'>")
-                df['min_exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+                df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
                     0) + ">"
-                df['max_exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+                df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
                     1) + ">"
                 df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
             df.rename(columns={
@@ -105,14 +105,14 @@ def create_optimizer(request):
                     max_exposures.append(value)
                 elif 'deviation' in key:
                     deviations.append(value)
-            result['min_exposure'] = 0
-            result['max_exposure'] = 1
+            result['Min Exposure'] = 0
+            result['Max Exposure'] = 1
             for ind in result.index:
                 result['AvgPointsPerGame'][ind] = fantasy_points[ind]
                 if int(max_exposure) != int(max_exposures[ind]) and int(max_exposures[ind]) > 1:
-                    result['max_exposure'][ind] = int(max_exposures[ind]) / 100
-                result['min_exposure'][ind] = int(min_exposures[ind]) / 100
-            result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
+                    result['Max Exposure'][ind] = int(max_exposures[ind]) / 100
+                result['Min Exposure'][ind] = int(min_exposures[ind]) / 100
+            # result = result.rename(columns={'max_exposure': 'Max Exposure', 'min_exposure': 'Min Exposure'})
             result.to_csv(Path("//home/ubuntu/Fantasy-Fire/website/optimizer/Predictions.csv"))
             optimizer.load_players_from_csv(
                 Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Predictions.csv'))
@@ -142,8 +142,8 @@ def create_optimizer(request):
         # df = create_predictions(df)
         df = create_predictions(df,
                                 slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/Main_Slate.csv'))
-        df['min_exposure'] = 0
-        df['max_exposure'] = 1
+        df['Min Exposure'] = 0
+        df['Max Exposure'] = 1
         df.insert(0, "Include", '', True)
         for ind in df.index:
             df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
@@ -152,9 +152,9 @@ def create_optimizer(request):
             # df['Predicted FP'] = df['Predicted FP'].apply(
             #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
             #         x) + " id='id_predicted_fp'>")
-            df['min_exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+            df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
                 0) + ">"
-            df['max_exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+            df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
                 1) + ">"
             df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
         df.rename(columns={
