@@ -49,6 +49,7 @@ def create_optimizer(request):
                                     slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/' + slate + '.csv'))
             df['Min Exposure'] = 0
             df['Max Exposure'] = 1
+            df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
             df.insert(0, "Include", '', True)
             for ind in df.index:
                 df['Predicted_FP'][ind] = "<input type='number' form='optimizer' name='fantasy_points_" + str(
@@ -65,10 +66,6 @@ def create_optimizer(request):
             df.rename(columns={
                 'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
                 inplace=True)
-            #hjkhjk
-            df['Predicted_FP'] = df['Predicted_FP'].astype(float)
-            df['Value'] = df.apply(lambda row: row.Predicted_FP / (row.Salary / 1000), axis = 1)
-            # df['Value'] = round(pd.to_numeric(df['Predicted_FP']) / (pd.to_numeric(df['Salary']) / 1000), 2)
             html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                     classes=[
                                         'table table-bordered table-striped table-hover table-responsive table-sm searchable sortable, container-fluid'])
@@ -148,7 +145,7 @@ def create_optimizer(request):
                                 slate=Path('//home/ubuntu/Fantasy-Fire/website/optimizer/Slates/Main_Slate.csv'))
         df['Min Exposure'] = 0
         df['Max Exposure'] = 1
-        df['Value'] = df.apply(lambda row: row.Predicted_FP / (row.Salary / 1000), axis = 1)
+        df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
         df.insert(0, "Include", '', True)
         for ind in df.index:
             df['Predicted_FP'][ind] = "<input type='number' form='optimizer' name='fantasy_points_" + str(
