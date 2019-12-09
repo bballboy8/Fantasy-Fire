@@ -1,11 +1,7 @@
 {% extends "optimizer/base.html" %}
 {% load crispy_forms_tags %}
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500" rel="stylesheet"/>
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <style>
         /* Dropdown Button */
 
@@ -100,13 +96,6 @@
     }
   }
 }
-$(document).ready(function() {
-   $("#slateData").DataTable({
-      columnDefs : [
-    { type : 'Salary', targets : [5] }
-],  
-   });
-});
 
 </script>
 
@@ -126,7 +115,7 @@ $(document).ready(function() {
     <!--<br>-->
     {{form}}<br><br>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Name">
-    <div>
+    <div class="table-responsive searchable sortable">
         {{ player_table |safe }}
     </div>
 </form>
