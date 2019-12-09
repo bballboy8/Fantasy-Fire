@@ -15,7 +15,7 @@ def create_predictions(predictions,
     pd.set_option('display.width', 1000)
     np.set_printoptions(threshold=10000000)
     df = pd.read_csv(slate)
-    df.insert(7, "Opp", '', True)
+    df.insert(8, "Opp", '', True)
     df['Opp'] = np.where(df['TeamAbbrev'] == df['Game Info'].str[:3], df['Game Info'].str[4:7], df['Game Info'].str[:3])
     # df['Opp'] = np.where(df['TeamAbbrev'].str != df['Game Info'].str[:3]), df['Game Info'].str[:3], df['Game Info'].str[4:7])
     # df['Opp'] = df['Game Info'].str[:3] if df['TeamAbbrev'].str != df['Game Info'].str[:3] else df['Game Info'].str[4:7]
