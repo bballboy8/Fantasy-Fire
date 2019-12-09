@@ -67,7 +67,7 @@ def create_optimizer(request):
                 inplace=True)
             #hjkhjk
             df['Predicted_FP'] = df['Predicted_FP'].astype(float)
-            df['Value'] = df.apply(lambda row: round(row.Predicted_FP / (row.Salary / 1000), 2), axis = 1)
+            df['Value'] = df.apply(lambda row: row.Predicted_FP / (row.Salary / 1000), axis = 1)
             # df['Value'] = round(pd.to_numeric(df['Predicted_FP']) / (pd.to_numeric(df['Salary']) / 1000), 2)
             html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                     classes=[
@@ -165,7 +165,7 @@ def create_optimizer(request):
             'Include': "<input type='checkbox' id='parent' onclick='checkAll()' checked>"},
             inplace=True)
         df['Predicted_FP'] = df['Predicted_FP'].astype(float)
-        df['Value'] = df.apply(lambda row: round(row.Predicted_FP / (row.Salary / 1000), 2), axis = 1)
+        df['Value'] = df.apply(lambda row: row.Predicted_FP / (row.Salary / 1000, axis = 1)
         # df['Value'] = df['Predicted_FP'] / (df['Salary'] / 1000)
         html_table = df.to_html(index=False, justify='left', escape=False, table_id='slateData',
                                 classes=[
