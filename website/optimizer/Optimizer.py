@@ -34,8 +34,8 @@ if __name__ == '__main__':
     np.set_printoptions(threshold=10000000)
     optimizer = get_optimizer(Site.DRAFTKINGS_CAPTAIN_MODE, Sport.BASKETBALL)
     # optimizer = get_optimizer(Site.DRAFTKINGS, Sport.BASKETBALL)
-    df = pd.read_csv("Showdown 2.csv")
-    df2 = pd.read_csv("prediction.csv")
+    df = pd.read_csv(r"C:\Users\Charlie\Documents\GitHub\Fantasy-Fire\website\optimizer\Slates\Main_Slate.csv")
+    df2 = pd.read_csv(r"C:\Users\Charlie\Documents\GitHub\Fantasy-Fire\website\optimizer\prediction.csv")
     result = df.merge(df2, left_on='Name', right_on='name', how='left')
     result = result.drop(
         columns=['AvgPointsPerGame'])
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     # 'name_y.1', 'Unnamed: 0_y', 'name'])
     # result = result.rename(columns={'predicted': 'AvgPointsPerGame'})
     result = result.fillna(0)
-    result.to_csv("Predictions.csv")
-    optimizer.load_players_from_csv('Predictions.csv')
+    result.to_csv(r"C:\Users\Charlie\Documents\GitHub\Fantasy-Fire\website\optimizer\Predictions.csv")
+    optimizer.load_players_from_csv(r'C:\Users\Charlie\Documents\GitHub\Fantasy-Fire\website\optimizer\Predictions.csv')
     # drummond = optimizer.get_player_by_name('Drummond')
     # young = optimizer.get_player_by_name('Young')
     # curry = optimizer.get_player_by_name('Curry')
@@ -89,5 +89,5 @@ if __name__ == '__main__':
     # optimizer.set_max_repeating_players(5) #restricts how many unique players each team must have
     # optimizer.set_team_stacking([3, 3]) #in this case, two teams must have at least 3 players present
     # optimizer.set_players_from_one_team({'GS': 2, 'LAC': 2})
-    exporter = CSVLineupExporter(optimizer.optimize(37, randomness=True))
-    exporter.export('lineups.csv')
+    exporter = CSVLineupExporter(optimizer.optimize(300, randomness=True))
+    exporter.export(r'C:\Users\Charlie\Documents\GitHub\Fantasy-Fire\website\optimizer\lineups.csv')
