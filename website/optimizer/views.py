@@ -52,15 +52,15 @@ def create_optimizer(request):
             df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
             df.insert(0, "Include", '', True)
             for ind in df.index:
-                df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
+                df['Predicted_FP'][ind] = "<input type='number' form='optimizer' step=0.01 name='fantasy_points_" + str(
                     ind) + "' value=" + str(round(df['Predicted_FP'][ind], 2)) + " id='id_predicted_fp'>"
                 # df['Predicted FP'] = df['Predicted FP'].apply(lambda x: round(float(x), 2))
                 # df['Predicted FP'] = df['Predicted FP'].apply(
                 #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
                 #         x) + " id='id_predicted_fp'>")
-                df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+                df['Min Exposure'][ind] = "<input type='number' step=0.01 name='min_exposure_" + str(ind) + "' value=" + str(
                     0) + ">"
-                df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+                df['Max Exposure'][ind] = "<input type='number' step=0.01 name='max_exposure_" + str(ind) + "' value=" + str(
                     1) + ">"
                 df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
             df = df[['Include', 'Name','ID','Roster Position','Salary','TeamAbbrev','Opp','Predicted_FP','Min Exposure','Max Exposure','Value']]
@@ -149,15 +149,15 @@ def create_optimizer(request):
         df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
         df.insert(0, "Include", '', True)
         for ind in df.index:
-            df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
+            df['Predicted_FP'][ind] = "<input type='number' step=0.01 form='optimizer' name='fantasy_points_" + str(
                 ind) + "' value=" + str(round(df['Predicted_FP'][ind], 2)) + " id='id_predicted_fp'>"
             # df['Predicted FP'] = df['Predicted FP'].apply(lambda x: round(float(x), 2))
             # df['Predicted FP'] = df['Predicted FP'].apply(
             #     lambda x: "<input type='text' form='optimizer' name='fantasy_points_" + df['Name'] + "' value=" + str(
             #         x) + " id='id_predicted_fp'>")
-            df['Min Exposure'][ind] = "<input type='text' name='min_exposure_" + str(ind) + "' value=" + str(
+            df['Min Exposure'][ind] = "<input type='number' step=0.01 name='min_exposure_" + str(ind) + "' value=" + str(
                 0) + ">"
-            df['Max Exposure'][ind] = "<input type='text' name='max_exposure_" + str(ind) + "' value=" + str(
+            df['Max Exposure'][ind] = "<input type='number' step=0.01 name='max_exposure_" + str(ind) + "' value=" + str(
                 1) + ">"
             df['Include'][ind] = "<input type='checkbox' id='child' name='include_" + str(ind) + "' checked>"
         df = df[['Include', 'Name','ID','Roster Position','Salary','TeamAbbrev','Opp','Predicted_FP','Min Exposure','Max Exposure','Value']]
