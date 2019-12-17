@@ -52,7 +52,7 @@ def create_optimizer(request):
             df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
             df.insert(0, "Include", '', True)
             for ind in df.index:
-                df['Predicted_FP'][ind] = "<input type='number' form='optimizer' step='0.01' name='fantasy_points_" + str(
+                df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
                     ind) + "' value=" + str(round(df['Predicted_FP'][ind], 2)) + " id='id_predicted_fp'>"
                 # df['Predicted FP'] = df['Predicted FP'].apply(lambda x: round(float(x), 2))
                 # df['Predicted FP'] = df['Predicted FP'].apply(
@@ -149,7 +149,7 @@ def create_optimizer(request):
         df['Value'] = round(df['Predicted_FP'] / (df['Salary'] / 1000),2)
         df.insert(0, "Include", '', True)
         for ind in df.index:
-            df['Predicted_FP'][ind] = "<input type='number' step='0.01' form='optimizer' name='fantasy_points_" + str(
+            df['Predicted_FP'][ind] = "<input type='text' form='optimizer' name='fantasy_points_" + str(
                 ind) + "' value=" + str(round(df['Predicted_FP'][ind], 2)) + " id='id_predicted_fp'>"
             # df['Predicted FP'] = df['Predicted FP'].apply(lambda x: round(float(x), 2))
             # df['Predicted FP'] = df['Predicted FP'].apply(
