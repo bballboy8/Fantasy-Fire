@@ -29,7 +29,7 @@ class OptimizerForm(forms.Form):
     min_salary = forms.IntegerField(label='Minimum Salary', max_value=50000, min_value=15000, initial=40000)
     max_exposure = forms.IntegerField(label='Maximum Exposure', max_value=100, min_value=1, initial=100)
     generation_type = forms.ChoiceField(choices=CHOICES)
-    with_replacement = forms.BooleanField()
+    with_replacement = forms.BooleanField(required=False)
 
 
 class SlateForm(forms.Form):
