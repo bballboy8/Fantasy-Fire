@@ -79,6 +79,7 @@ def create_optimizer(request):
             no_lineups = form.cleaned_data['no_lineups']
             deviation = form.cleaned_data['deviation']
             generation_type = form.cleaned_data['generation_type']
+            with_replacement = form.cleaned_data['with_replacement']
 
             if "Showdown" in slate:
                 optimizer = get_optimizer(Site.DRAFTKINGS_CAPTAIN_MODE, Sport.BASKETBALL)
@@ -129,7 +130,7 @@ def create_optimizer(request):
                 player = optimizer.get_player_by_id(id)
                 optimizer.restore_player(player)
             exporter = CSVLineupExporter(
-                optimizer.optimize(no_lineups, randomness=generation_type, max_exposure=max_exposure/100))
+                optimizer.optimize(no_lineups, randomness=generation_type, with_replacement=with_replacement, max_exposure=max_exposure/100))
             exporter.export(Path('//home/ubuntu/Fantasy-Fire/website/optimizer/lineups.csv'))
 
             with open('//home/ubuntu/Fantasy-Fire/website/optimizer/lineups.csv') as myfile:
