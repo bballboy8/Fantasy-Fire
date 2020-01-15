@@ -109,13 +109,14 @@
 <form method="post" action="/optimizer/" id="optimizer">
     <input type="hidden" name="slate" value={{slate}}>
     {% csrf_token %}
-    <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-    <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
     <button type="submit" name="Generate_Lineups">Generate Lineups</button>
     <!--<p>Number of Lineups: <input id="no_lineups" type="number" name="no_lineups" value=1 min="1"></p>-->
     <!--<br>-->
     <!--<br>-->
-    {{form}}<br><br>
+    {{form}}
+    <br>
+    <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+    <br><br>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Name"><br>
     <!-- <div class="table-responsive searchable sortable"> -->
     <div class="table-responsive searchable sortable">
